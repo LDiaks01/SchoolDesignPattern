@@ -12,10 +12,9 @@ import school.management.system.observateur.Subjects;
  * This class is responsible for keeping the track
  * of teacher's name, id, salary.
  */
-public class Teacher implements Entity, Observateur {
 
-    private int id;
-    private String name;
+public class Teacher extends Membre implements Entity, Observateur {
+
     private int salary;
     private int salaryEarned;
     private Subjects subject;
@@ -28,30 +27,11 @@ public class Teacher implements Entity, Observateur {
      * @param salary salary of the teacher.
      */
     public Teacher(int id, String name, Subjects subject, int salary){
-        this.id=id;
-        this.name=name;
-        this.subject = subject;
+       super(id,name);
         this.salary=salary;
         this.salaryEarned=0;
         this.students = new ArrayList<>();
     }
-
-    /**
-     *
-     * @return the id of the teacher.
-     */
-    public int getId(){
-        return id;
-    }
-
-    /**
-     *
-     * @return name of the teacher.
-     */
-    public String getName(){
-        return name;
-    }
-
 
     /**
      *
@@ -81,20 +61,21 @@ public class Teacher implements Entity, Observateur {
     
     @Override
 	public void actualiser(Student s) {
-		if(s.getSubjects().contains(this.subject)) {
-			if(! this.students.contains(s)) {
+//		if(s.getSubjects().contains(this.subject)) {
+//			if(! this.students.contains(s)) {
 				this.students.add(s);
-			}
-		}
+//			}
+//		}
 		this.toString();
 	}
 
 
     @Override
     public String toString() {
-        return "Name of the Teacher: " + name+
-        		"\nTotal salary earned so far $" + salaryEarned+
-        		"\nList of students : " + students; 
+
+        return "Name of the Teacher: " + this.getName()
+                +"\nTotal salary earned so far $"+ salaryEarned+
+        		"\nList of students : " + students ; 
     }
 
 	

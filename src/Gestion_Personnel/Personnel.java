@@ -1,32 +1,62 @@
 package Gestion_Personnel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import school.management.system.Membre;
 import school.management.system.Teacher;
 
 public class Personnel implements GestionnairePersonnel{
-	public static List<Teacher> ListeTeacher = new ArrayList<>();
-	  public void ajouterPersonnel(Teacher personnel) {
+	public static List<Membre> ListeTeacher = new ArrayList<>();
+	public static List<Membre> ListeStudent = new ArrayList<>();
+	
+	  public void ajouterPersonnel(Membre personnel) {
 	        // Code pour ajouter du personnel
-		    ListeTeacher.add(personnel);
+		  if(personnel instanceof Teacher) {
+			  ListeTeacher.add(personnel);
+		  }else {
+			  ListeStudent.add(personnel);  
+		  }
+		    
 	    }
-	    public void supprimerPersonnel(int id) {
-	     	for(Teacher t : ListeTeacher) {
-	    		 if(t.getId()==id) {
-	    			 ListeTeacher.remove(t);
-	    			
-	    		 }
-	    	}
+	  
+	    public void supprimerPersonnel(Membre membre) {
+	    	  if(membre instanceof Teacher) {
+				  ListeTeacher.remove(membre);
+			  }else {
+				  ListeStudent.remove(membre);  
+			  }
 	       
 	    }
-	    public void modifierPersonnel(Teacher personnel) {
+	    public void modifierPersonnel(Membre personnel) {
 	        // Code pour modifier du personnel
-	    	for(Teacher t : ListeTeacher) {
-	    		 if(t.getId()==personnel.getId()) {
-	    			 ListeTeacher.remove(t);
-	    			 ListeTeacher.add(personnel);
-	    		 }
+	    	 if(personnel instanceof Teacher) {
+	    		 Iterator<Membre> TeacherIterator = ListeTeacher.iterator();
+				    while (TeacherIterator.hasNext()) {
+				        Membre t = TeacherIterator.next();
+				        if (t.getId() == personnel.getId()) {
+				           
+				        	TeacherIterator.remove();
+				            
+				        } 
+				 }
+			  }else {
+				  Iterator<Membre> StudentIterator = ListeStudent.iterator();
+				    while (StudentIterator.hasNext()) {
+				        Membre t = StudentIterator.next();
+				        if (t.getId() == personnel.getId()) {
+				           
+				        	StudentIterator.remove();
+				            
+				        } 
+				 }
+			  
+	    	
+	   
+	    			  
+			  }	
+	    		 
 	    	}
-	    }
+	    
 }

@@ -18,6 +18,7 @@ import Strategy.Espece;
 public class Main {
     public static void main(String[] args) {
         //Declaration des fabriques pour les students et teachers
+    	
         StudentFabrique studentFabrique = new StudentFabrique();
         TeacherFabrique teacherFabrique = new TeacherFabrique();
 
@@ -38,25 +39,39 @@ public class Main {
         Student tamasha = studentFabrique.createStudent(1,"Tamasha",4);
         Student rakshith = studentFabrique.createStudent(2,"Rakshith Vasudev",12);
         Student rabbi = studentFabrique.createStudent(3,"Rabbi",5);
+
         List<Student> studentList = new ArrayList<>();
 
         studentList.add(tamasha);
         studentList.add(rabbi);
         studentList.add(rakshith);
 
+        p.add(tamasha);
+        p.add(rakshith);
+        p.add(rabbi);
         
+       /* System.out.println(Personnel.ListeStudent.toString());
 
 
+       tamasha = studentFabrique.createStudent(1,"TamashaALLLLLLLLL",4);
+            
+        p.update(tamasha);
+
+        System.out.println(Personnel.ListeStudent.toString());
+        
+        */
+        
         //On recupere l'instance
         School ghs = School.getINSTANCE();
         // et si on veut initialiser des valeurs, on appelle setSchool
         // attention à l'utilisation de cette méthode
-        ghs.setSchool(Personnel.ListeTeacher,studentList);
+        ghs.setSchool(Personnel.ListeTeacher,Personnel.ListeStudent);
 
         Teacher megan = teacherFabrique.createTeacher(6,"Megan", Subjects.Statistique, 900);
 
         ghs.addTeacher(megan);
-
+         
+        //mode de paiement
         tamasha.payFees(new Carte("12141222", 117, "45445"),4500);
         rakshith.payFees(new Espece(),6000);
         
@@ -72,16 +87,16 @@ public class Main {
                 +" and now has $" + ghs.getTotalMoneyEarned());
 
       
-      System.out.println(rakshith);
+//      System.out.println(rakshith);
 
       mellisa.receiveSalary(mellisa.getSalary());
 
       //test pattern observateur
-      /*tamasha.enregisterObservateur(mellisa);
+      tamasha.enregisterObservateur(mellisa);
       
       tamasha.registerSubject(Subjects.BaseDeDonnees);
        
-      System.out.println(mellisa);*/
+      System.out.println(mellisa);
 
        
         

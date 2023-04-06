@@ -1,6 +1,5 @@
 package school.management.system.fabrique;
 
-import school.management.system.School;
 import school.management.system.Student;
 import school.management.system.Teacher;
 import school.management.system.observateur.Subjects;

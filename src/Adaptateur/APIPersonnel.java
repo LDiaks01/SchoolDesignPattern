@@ -1,9 +1,10 @@
 package Adaptateur;
 
+import school.management.system.Membre;
 import school.management.system.Teacher;
 
 public interface APIPersonnel {
-	    public void add(Teacher personnel);
-	    public void remove(int id);
-	    public void update(Teacher personnel);
+	    public void add(Membre personnel);
+	    public void remove(Membre membre);
+	    public void update(Membre personnel);
 }

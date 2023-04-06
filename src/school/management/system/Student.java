@@ -16,10 +16,9 @@ import school.management.system.observateur.Sujet;
  * paid.
  *
  */
-public class Student implements Entity, Sujet {
 
-    private int id;
-    private String name;
+public class Student extends Membre implements Entity, Sujet{
+
     private int grade;
     private int feesPaid;
     private int feesTotal;
@@ -36,10 +35,9 @@ public class Student implements Entity, Sujet {
      * @param grade grade of the student.
      */
     public Student(int id, String name,int grade){
+    	super(id,name);
         this.feesPaid=0;
         this.feesTotal=30000;
-        this.id=id;
-        this.name=name;
         this.grade=grade;
 
     }
@@ -84,23 +82,7 @@ public class Student implements Entity, Sujet {
         feesPaid+=p.payer(montant);
         School.updateTotalMoneyEarned(feesPaid);
     }
-
-    /**
-     *
-     * @return id of the student.
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     *
-     * @return name of the student.
-     */
-    public String getName() {
-        return name;
-    }
-
+    
     /**
      *
      * @return the grade of the student.
@@ -158,7 +140,8 @@ public class Student implements Entity, Sujet {
 
     @Override
     public String toString() {
-        return "Student's name :"+name+
+
+        return "Student's name :"+super.getName()+
                 "\nTotal fees paid so far $"+ feesPaid+ 
                 "\nList of subjects : " + subjects +" ";
     }
