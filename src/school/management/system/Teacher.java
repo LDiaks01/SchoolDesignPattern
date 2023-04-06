@@ -1,11 +1,13 @@
 package school.management.system;
 
+import school.management.system.fabrique.Entity;
+
 /**
  * Created by Rakshith on 4/3/2017.
  * This class is responsible for keeping the track
  * of teacher's name, id, salary.
  */
-public class Teacher {
+public class Teacher implements Entity {
 
     private int id;
     private String name;

@@ -1,5 +1,7 @@
 package school.management.system;
 
+import school.management.system.fabrique.Entity;
+
 /**
  * Created by Rakshith on 4/3/2017.
  * This class is responsible for keeping the
@@ -7,7 +9,7 @@ package school.management.system;
  * paid.
  *
  */
-public class Student {
+public class Student implements Entity {
 
     private int id;
     private String name;

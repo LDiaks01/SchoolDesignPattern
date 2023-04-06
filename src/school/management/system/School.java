@@ -1,5 +1,7 @@
 package school.management.system;
 
+import school.management.system.fabrique.Entity;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
  * using an ArrayList.
  * Created by Rakshith on 4/3/2017.
  */
-public class School {
+public class School implements Entity {
     //declaration de la seule instance possible de School
     private static School INSTANCE;
     private List<Teacher> teachers;

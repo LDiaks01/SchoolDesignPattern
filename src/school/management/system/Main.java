@@ -1,5 +1,8 @@
 package school.management.system;
 
+import school.management.system.fabrique.StudentFabrique;
+import school.management.system.fabrique.TeacherFabrique;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +11,14 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        Teacher lizzy = new Teacher(1,"Lizzy",500);
-        Teacher mellisa = new Teacher(2,"Mellisa",700);
-        Teacher vanderhorn = new Teacher(3,"Vanderhorn",600);
+        //Declaration des fabriques pour les students et teachers
+        StudentFabrique studentFabrique = new StudentFabrique();
+        TeacherFabrique teacherFabrique = new TeacherFabrique();
+
+        // Exemple : Teacher lizzy = new Teacher(1,"Lizzy",500) => teacherFabrique.createTeacher(1,"Lizzy",500);
+        Teacher lizzy = teacherFabrique.createTeacher(1,"Lizzy",500);
+        Teacher mellisa = teacherFabrique.createTeacher(2,"Mellisa",700);
+        Teacher vanderhorn =  teacherFabrique.createTeacher(3,"Vanderhorn",600);
 
         List<Teacher> teacherList = new ArrayList<>();
         teacherList.add(lizzy);
@@ -18,9 +26,10 @@ public class Main {
         teacherList.add(vanderhorn);
 
 
-        Student tamasha = new Student(1,"Tamasha",4);
-        Student rakshith = new Student(2,"Rakshith Vasudev",12);
-        Student rabbi = new Student(3,"Rabbi",5);
+        //Les objets sont désormais crées par la fabrique
+        Student tamasha = studentFabrique.createStudent(1,"Tamasha",4);
+        Student rakshith = studentFabrique.createStudent(2,"Rakshith Vasudev",12);
+        Student rabbi = studentFabrique.createStudent(3,"Rabbi",5);
         List<Student> studentList = new ArrayList<>();
 
         studentList.add(tamasha);
@@ -36,7 +45,7 @@ public class Main {
         // attention à l'utilisation de cette méthode
         ghs.setSchool(teacherList,studentList);
 
-        Teacher megan = new Teacher(6,"Megan", 900);
+        Teacher megan = teacherFabrique.createTeacher(6,"Megan", 900);
 
         ghs.addTeacher(megan);
 
