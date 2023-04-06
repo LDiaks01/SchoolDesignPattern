@@ -9,18 +9,36 @@ import java.util.List;
  * Created by Rakshith on 4/3/2017.
  */
 public class School {
-
+    //declaration de la seule instance possible de School
+    private static School INSTANCE;
     private List<Teacher> teachers;
     private List<Student> students;
     private static int  totalMoneyEarned;
     private static int totalMoneySpent;
 
+
+    //Mise en place du design pattern Singleton
+    //On commence par rendre le constructeur privé
+    private School(){};
+
+    // On met en place la méthode d'accès à l'instance de School
+
+    public static synchronized School getINSTANCE() {
+        if(INSTANCE == null)
+        {
+            return new School();
+        }
+        return INSTANCE;
+    }
+
     /**
-     * new school object is created.
+     * Etant donné que School n'a qu'une instance unique désormais et qu'au début elle est vide,
+     * Cette méthode permet d'affecter des valeurs aux attributs de la classe car on ne peut plus passer le constructeur
+     * A noter qu'on peut également passer par les getters et setteurs de chaque attribut
      * @param teachers list of teachers in the school.
      * @param students list of students int the school.
      */
-    public School(List<Teacher> teachers, List<Student> students) {
+    public void setSchool(List<Teacher> teachers, List<Student> students) {
         this.teachers = teachers;
         this.students = students;
         totalMoneyEarned=0;

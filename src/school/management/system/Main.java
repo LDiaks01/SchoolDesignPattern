@@ -30,7 +30,11 @@ public class Main {
 
 
 
-        School ghs = new School(teacherList,studentList);
+        //On recupere l'instance
+        School ghs = School.getINSTANCE();
+        // et si on veut initialiser des valeurs, on appelle setSchool
+        // attention à l'utilisation de cette méthode
+        ghs.setSchool(teacherList,studentList);
 
         Teacher megan = new Teacher(6,"Megan", 900);
 
