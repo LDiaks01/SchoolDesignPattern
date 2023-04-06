@@ -6,4 +6,5 @@ package school.management.system.fabrique;
  * Elle permet de rendre le code plus facine à maintenir
  */
 public interface Entity {
+
 }

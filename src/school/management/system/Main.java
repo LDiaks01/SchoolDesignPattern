@@ -2,6 +2,7 @@ package school.management.system;
 
 import school.management.system.fabrique.StudentFabrique;
 import school.management.system.fabrique.TeacherFabrique;
+import school.management.system.observateur.Subjects;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,10 @@ public class Main {
         StudentFabrique studentFabrique = new StudentFabrique();
         TeacherFabrique teacherFabrique = new TeacherFabrique();
 
-        // Exemple : Teacher lizzy = new Teacher(1,"Lizzy",500) => teacherFabrique.createTeacher(1,"Lizzy",500);
-        Teacher lizzy = teacherFabrique.createTeacher(1,"Lizzy",500);
-        Teacher mellisa = teacherFabrique.createTeacher(2,"Mellisa",700);
-        Teacher vanderhorn =  teacherFabrique.createTeacher(3,"Vanderhorn",600);
+        // Exemple : Teacher lizzy = new Teacher(1,"Lizzy",Subjects.Algorithme,500) => teacherFabrique.createTeacher(1,"Lizzy",Subjects.Algorithme,500);
+        Teacher lizzy = teacherFabrique.createTeacher(1,"Lizzy", Subjects.Algorithme, 500);
+        Teacher mellisa = teacherFabrique.createTeacher(2,"Mellisa", Subjects.BaseDeDonnees, 700);
+        Teacher vanderhorn =  teacherFabrique.createTeacher(3,"Vanderhorn", Subjects.DesignPattern, 600);
 
 
         PersonnelAdapter p = new PersonnelAdapter();
@@ -43,7 +44,7 @@ public class Main {
         studentList.add(rabbi);
         studentList.add(rakshith);
 
-
+        
 
 
         //On recupere l'instance
@@ -52,7 +53,7 @@ public class Main {
         // attention à l'utilisation de cette méthode
         ghs.setSchool(Personnel.ListeTeacher,studentList);
 
-        Teacher megan = teacherFabrique.createTeacher(6,"Megan", 900);
+        Teacher megan = teacherFabrique.createTeacher(6,"Megan", Subjects.Statistique, 900);
 
         ghs.addTeacher(megan);
 
@@ -70,13 +71,23 @@ public class Main {
         System.out.println("GHS has spent for salary to " + vanderhorn.getName()
                 +" and now has $" + ghs.getTotalMoneyEarned());
 
+      
+      System.out.println(rakshith);
 
-        System.out.println(rakshith);
+      mellisa.receiveSalary(mellisa.getSalary());
 
-        mellisa.receiveSalary(mellisa.getSalary());
+      //test pattern observateur
+      /*tamasha.enregisterObservateur(mellisa);
+      
+      tamasha.registerSubject(Subjects.BaseDeDonnees);
+       
+      System.out.println(mellisa);*/
 
-        System.out.println(mellisa);
-
-
+       
+        
+       
+        
+        
+       
     }
 }

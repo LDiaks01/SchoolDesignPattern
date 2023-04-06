@@ -1,7 +1,13 @@
 package school.management.system;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Strategy.Paiement;
 import school.management.system.fabrique.Entity;
+import school.management.system.observateur.Observateur;
+import school.management.system.observateur.Subjects;
+import school.management.system.observateur.Sujet;
 
 /**
  * Created by Rakshith on 4/3/2017.
@@ -10,15 +16,18 @@ import school.management.system.fabrique.Entity;
  * paid.
  *
  */
-public class Student implements Entity {
+public class Student implements Entity, Sujet {
 
     private int id;
     private String name;
     private int grade;
     private int feesPaid;
     private int feesTotal;
+    private List<Subjects> subjects = new ArrayList<>();
+    private List<Observateur> observateurs = new ArrayList();
 
-    /**
+
+	/**
      * To create a new student by initializing.
      * Fees for every student is $30,000.
      * Fees paid initially is 0.
@@ -35,16 +44,33 @@ public class Student implements Entity {
 
     }
 
+    
+	@Override
+	public void enregisterObservateur(Observateur o) {
+		observateurs.add(o);
+	}
+
+	@Override
+	public void supprimerObservateur(Observateur o) {
+		observateurs.remove(o);
+		
+	}
+
+	@Override
+	public void notifierObservateur() {
+		for(Observateur o : observateurs) {
+			o.actualiser(this);
+		}
+		
+	}
+    
+	public void registerSubject(Subjects s) {
+		 this.subjects.add(s);
+		 this.notifierObservateur();
+	}
+  
+    
     //Not going to alter student's name, student's id.
-
-
-    /**
-     * Used to update the student's grade.
-     * @param grade new grade of the student.
-     */
-    public void setGrade(int grade){
-        this.grade=grade;
-    }
 
 
     /**
@@ -54,7 +80,7 @@ public class Student implements Entity {
      *
      * @param fees the fees that the student pays.
      */
-    public void payFees(Paiement p,double montant){
+    public void payFees(Paiement p, double montant){
         feesPaid+=p.payer(montant);
         School.updateTotalMoneyEarned(feesPaid);
     }
@@ -83,6 +109,15 @@ public class Student implements Entity {
         return grade;
     }
 
+
+    /**
+     * Used to update the student's grade.
+     * @param grade new grade of the student.
+     */
+    public void setGrade(int grade){
+        this.grade=grade;
+    }
+    
     /**
      *
      * @return fees paid by the student.
@@ -91,6 +126,11 @@ public class Student implements Entity {
         return feesPaid;
     }
 
+    public void setFeesPaid(int feesPaid) {
+		this.feesPaid = feesPaid;
+	}
+
+    
     /**
      *
      * @return the total fees of the student.
@@ -99,17 +139,29 @@ public class Student implements Entity {
         return feesTotal;
     }
 
-    /**
+    public void setFeesTotal(int feesTotal) {
+		this.feesTotal = feesTotal;
+	}
+    
+    public List<Subjects> getSubjects() {
+		return subjects;
+	}
+
+	
+	/**
      *
      * @return the remaining fees.
      */
     public int getRemainingFees(){
-        return feesTotal-feesPaid;
+        return feesTotal - feesPaid;
     }
 
     @Override
     public String toString() {
         return "Student's name :"+name+
-                " Total fees paid so far $"+ feesPaid;
+                "\nTotal fees paid so far $"+ feesPaid+ 
+                "\nList of subjects : " + subjects +" ";
     }
+
+	
 }

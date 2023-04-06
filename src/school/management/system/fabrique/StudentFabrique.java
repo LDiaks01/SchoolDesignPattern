@@ -2,6 +2,7 @@ package school.management.system.fabrique;
 
 import school.management.system.Student;
 import school.management.system.Teacher;
+import school.management.system.observateur.Subjects;
 
 public class StudentFabrique extends AbstractFabrique{
     @Override
@@ -11,7 +12,7 @@ public class StudentFabrique extends AbstractFabrique{
 
 
     @Override
-    public Teacher createTeacher(int id, String name, int salary) {
+    public Teacher createTeacher(int id, String name, Subjects subject, int salary) {
         throw new UnsupportedOperationException("La fabrique de Student ne peut pas créer des enseignants, utiliser TeacherFabrique à la place");
     }
 }

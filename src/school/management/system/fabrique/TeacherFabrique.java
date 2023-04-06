@@ -3,6 +3,7 @@ package school.management.system.fabrique;
 import school.management.system.School;
 import school.management.system.Student;
 import school.management.system.Teacher;
+import school.management.system.observateur.Subjects;
 
 public class TeacherFabrique extends AbstractFabrique{
     /**
@@ -27,7 +28,7 @@ public class TeacherFabrique extends AbstractFabrique{
      * @return
      */
     @Override
-    public Teacher createTeacher(int id, String name, int salary) {
-        return new Teacher(id,name,salary);
+    public Teacher createTeacher(int id, String name, Subjects subject, int salary) {
+        return new Teacher(id, name, subject, salary);
     }
 }
