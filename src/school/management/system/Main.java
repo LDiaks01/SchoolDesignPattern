@@ -6,6 +6,11 @@ import school.management.system.fabrique.TeacherFabrique;
 import java.util.ArrayList;
 import java.util.List;
 
+import Adaptateur.PersonnelAdapter;
+import Gestion_Personnel.Personnel;
+import Strategy.Carte;
+import Strategy.Espece;
+
 /**
  * Created by Rakshith on 4/3/2017.
  */
@@ -20,10 +25,12 @@ public class Main {
         Teacher mellisa = teacherFabrique.createTeacher(2,"Mellisa",700);
         Teacher vanderhorn =  teacherFabrique.createTeacher(3,"Vanderhorn",600);
 
-        List<Teacher> teacherList = new ArrayList<>();
-        teacherList.add(lizzy);
-        teacherList.add(mellisa);
-        teacherList.add(vanderhorn);
+
+        PersonnelAdapter p = new PersonnelAdapter();
+        
+         p.add(vanderhorn);
+         p.add(mellisa);
+         p.add(lizzy);
 
 
         //Les objets sont désormais crées par la fabrique
@@ -43,15 +50,15 @@ public class Main {
         School ghs = School.getINSTANCE();
         // et si on veut initialiser des valeurs, on appelle setSchool
         // attention à l'utilisation de cette méthode
-        ghs.setSchool(teacherList,studentList);
+        ghs.setSchool(Personnel.ListeTeacher,studentList);
 
         Teacher megan = teacherFabrique.createTeacher(6,"Megan", 900);
 
         ghs.addTeacher(megan);
 
-
-        tamasha.payFees(5000);
-        rakshith.payFees(6000);
+        tamasha.payFees(new Carte("12141222", 117, "45445"),4500);
+        rakshith.payFees(new Espece(),6000);
+        
         System.out.println("GHS has earned $"+ ghs.getTotalMoneyEarned());
 
         System.out.println("------Making SCHOOL PAY SALARY----");

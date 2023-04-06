@@ -1,5 +1,6 @@
 package school.management.system;
 
+import Strategy.Paiement;
 import school.management.system.fabrique.Entity;
 
 /**
@@ -53,8 +54,8 @@ public class Student implements Entity {
      *
      * @param fees the fees that the student pays.
      */
-    public void payFees(int fees){
-        feesPaid+=fees;
+    public void payFees(Paiement p,double montant){
+        feesPaid+=p.payer(montant);
         School.updateTotalMoneyEarned(feesPaid);
     }
 
