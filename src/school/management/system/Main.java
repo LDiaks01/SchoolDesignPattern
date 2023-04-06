@@ -17,10 +17,12 @@ import Strategy.Espece;
 public class Main {
     public static void main(String[] args) {
         //Declaration des fabriques pour les students et teachers
+    	
         StudentFabrique studentFabrique = new StudentFabrique();
         TeacherFabrique teacherFabrique = new TeacherFabrique();
 
         // Exemple : Teacher lizzy = new Teacher(1,"Lizzy",500) => teacherFabrique.createTeacher(1,"Lizzy",500);
+        
         Teacher lizzy = teacherFabrique.createTeacher(1,"Lizzy",500);
         Teacher mellisa = teacherFabrique.createTeacher(2,"Mellisa",700);
         Teacher vanderhorn =  teacherFabrique.createTeacher(3,"Vanderhorn",600);
@@ -55,7 +57,8 @@ public class Main {
         Teacher megan = teacherFabrique.createTeacher(6,"Megan", 900);
 
         ghs.addTeacher(megan);
-
+         
+        //mode de paiement
         tamasha.payFees(new Carte("12141222", 117, "45445"),4500);
         rakshith.payFees(new Espece(),6000);
         
