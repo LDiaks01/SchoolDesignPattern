@@ -10,10 +10,8 @@ import school.management.system.fabrique.Entity;
  * paid.
  *
  */
-public class Student implements Entity {
+public class Student extends Membre implements Entity{
 
-    private int id;
-    private String name;
     private int grade;
     private int feesPaid;
     private int feesTotal;
@@ -27,10 +25,9 @@ public class Student implements Entity {
      * @param grade grade of the student.
      */
     public Student(int id, String name,int grade){
+    	super(id,name);
         this.feesPaid=0;
         this.feesTotal=30000;
-        this.id=id;
-        this.name=name;
         this.grade=grade;
 
     }
@@ -63,17 +60,7 @@ public class Student implements Entity {
      *
      * @return id of the student.
      */
-    public int getId() {
-        return id;
-    }
 
-    /**
-     *
-     * @return name of the student.
-     */
-    public String getName() {
-        return name;
-    }
 
     /**
      *
@@ -109,7 +96,7 @@ public class Student implements Entity {
 
     @Override
     public String toString() {
-        return "Student's name :"+name+
+        return "Student's name :"+super.getName()+
                 " Total fees paid so far $"+ feesPaid;
     }
 }

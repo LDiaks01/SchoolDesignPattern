@@ -7,10 +7,8 @@ import school.management.system.fabrique.Entity;
  * This class is responsible for keeping the track
  * of teacher's name, id, salary.
  */
-public class Teacher implements Entity {
+public class Teacher extends Membre implements Entity {
 
-    private int id;
-    private String name;
     private int salary;
     private int salaryEarned;
 
@@ -21,8 +19,7 @@ public class Teacher implements Entity {
      * @param salary salary of the teacher.
      */
     public Teacher(int id, String name, int salary){
-        this.id=id;
-        this.name=name;
+       super(id,name);
         this.salary=salary;
         this.salaryEarned=0;
     }
@@ -31,17 +28,13 @@ public class Teacher implements Entity {
      *
      * @return the id of the teacher.
      */
-    public int getId(){
-        return id;
-    }
+  
 
     /**
      *
      * @return name of the teacher.
      */
-    public String getName(){
-        return name;
-    }
+
 
 
     /**
@@ -73,7 +66,7 @@ public class Teacher implements Entity {
 
     @Override
     public String toString() {
-        return "Name of the Teacher: " + name
+        return "Name of the Teacher: " + this.getName()
                 +" Total salary earned so far $"
                 + salaryEarned;
     }

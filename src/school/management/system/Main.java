@@ -39,20 +39,23 @@ public class Main {
         Student tamasha = studentFabrique.createStudent(1,"Tamasha",4);
         Student rakshith = studentFabrique.createStudent(2,"Rakshith Vasudev",12);
         Student rabbi = studentFabrique.createStudent(3,"Rabbi",5);
-        List<Student> studentList = new ArrayList<>();
+        
+        p.add(tamasha);
+        p.add(rakshith);
+        p.add(rabbi);
+        
+        System.out.println(Personnel.ListeStudent.toString());
 
-        studentList.add(tamasha);
-        studentList.add(rabbi);
-        studentList.add(rakshith);
+            tamasha = studentFabrique.createStudent(1,"TamashaALLLLLLLLL",4);
+            
+        p.update(tamasha);
 
-
-
-
+        System.out.println(Personnel.ListeStudent.toString());
         //On recupere l'instance
         School ghs = School.getINSTANCE();
         // et si on veut initialiser des valeurs, on appelle setSchool
         // attention à l'utilisation de cette méthode
-        ghs.setSchool(Personnel.ListeTeacher,studentList);
+        ghs.setSchool(Personnel.ListeTeacher,Personnel.ListeStudent);
 
         Teacher megan = teacherFabrique.createTeacher(6,"Megan", 900);
 
