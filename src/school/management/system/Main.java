@@ -12,7 +12,7 @@ import Gestion_Personnel.Personnel;
 import Strategy.Carte;
 import Strategy.Espece;
 import decorateurStudent.AssistantDecorator;
-import decorateurStudent.BasicStudent;
+
 
 /**
  * Created by Rakshith on 4/3/2017.
@@ -100,11 +100,10 @@ public class Main {
        
       System.out.println(mellisa);
       
-      //test pattern Decorateur
-    	BasicStudent basicStudent = new BasicStudent();
-    	AssistantDecorator assistantStudent = new AssistantDecorator(basicStudent);
-    	basicStudent.study();       
-    	assistantStudent.study();   // le student devient assistant 
+//      test pattern Decorateur
+
+      tamasha = new AssistantDecorator(tamasha);
+      System.out.println(tamasha.toString());
 
        
     }

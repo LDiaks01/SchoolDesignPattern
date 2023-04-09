@@ -1,18 +1,18 @@
 package decorateurStudent;
 
-public class AssistantDecorator implements Student {
+import school.management.system.Student;
+
+public class AssistantDecorator extends Student{
     private Student student;
     
-    public AssistantDecorator(Student student) {
-        this.student = student;
+    public AssistantDecorator( Student student) {
+        super(student.getId(),student.getName(),student.getGrade());
+        
     }
+  
     
-    public void study() {
-        student.study();
-        becomeAssistant();
-    }
-    
-    private void becomeAssistant() {
-        System.out.println("The student has become an assistant.");
-    }
+   public String toString() {
+	return super.getName()+" est devenu assistant pour aider les éleves en difficulté";
+	   
+   }
 }
