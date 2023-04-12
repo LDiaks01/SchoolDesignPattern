@@ -2,7 +2,7 @@ package decorateurStudent;
 
 import school.management.system.Student;
 
-public class AssistantDecorator extends Student{
+public class AssistantDecorator extends AjoutFonctionnalité{
     private Student student;
     
     public AssistantDecorator( Student student) {

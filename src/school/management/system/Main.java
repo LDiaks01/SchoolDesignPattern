@@ -100,8 +100,8 @@ public class Main {
        
       System.out.println(mellisa);
       
-//      test pattern Decorateur
-
+      //      test pattern Decorateur
+ 
       tamasha = new AssistantDecorator(tamasha);
       System.out.println(tamasha.toString());
 
